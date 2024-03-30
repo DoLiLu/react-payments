@@ -7,9 +7,7 @@ const Input: React.FC<InputProps> = ({onChange, ...rest}) => {
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value
         setInputValue(value)
-        if (onChange) {
-            onChange(event)
-        }
+        onChange?.(event)
     }
 
     return (

@@ -6,12 +6,12 @@ interface StepperContextType {
 }
 
 const StepperContext = createContext<StepperContextType>({
-    step: "/",
+    step: "AddCard",
     setCurrentStep: () => {}
 });
 
 export const StepperProvider: React.FC<{ children: React.ReactNode}> = ({ children }) => {
-    const [step, setStep] = useState<string>("/")
+    const [step, setStep] = useState<string>("AddCard")
 
     const setCurrentStep = (step: string) => {
         setStep(step)

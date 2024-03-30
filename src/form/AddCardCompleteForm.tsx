@@ -7,10 +7,7 @@ import AddCardComplete from "../components/AddCardComplete.tsx";
 function AddCardCompleteForm() {
     const {cards} = useContext(CardContext)
     const [cardAlias, setCardAlias] = useState('')
-    if (cards.length === 0) {
-        return
-    }
-    const card = cards[cards.length-1]
+    const card = cards?.[cards.length-1]
 
     const formattedCardNumber = () => {
         return `${card.cardNumber.first}-${card.cardNumber.second}-****-****`
@@ -26,7 +23,7 @@ function AddCardCompleteForm() {
                     <div className="card-box">
                         <div className="big-card">
                             <div className="card-top">
-                                <Display className={"card-text__big"} value={card.cardName}/>
+                                <Display className={"card-text__big"} value={card.cardCompanyName}/>
                             </div>
                             <div className="card-middle">
                                 <div className="big-card__chip"></div>
@@ -36,7 +33,7 @@ function AddCardCompleteForm() {
                                     <Display className={"card-text__big"} value={formattedCardNumber()}/>
                                 </div>
                                 <div className="card-bottom__info">
-                                    <Display className={"card-text__big"} value={card.name}/>
+                                    <Display className={"card-text__big"} value={card?.userName}/>
                                     <Display className={"card-text__big"} value={card.cardExpireDate}/>
                                 </div>
                             </div>
@@ -51,9 +48,10 @@ function AddCardCompleteForm() {
                         </Input>
                     </div>
                     <AddCardComplete
-                        cardName={card.cardName}
+                        id={card.id}
+                        cardCompanyName={card.cardCompanyName}
                         cardNumber={card.cardNumber}
-                        name={card.name}
+                        userName={card.userName}
                         cardExpireDate={card.cardExpireDate}
                         cardAlias={cardAlias}
                     >

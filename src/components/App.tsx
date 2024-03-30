@@ -8,14 +8,14 @@ import AddCardForm from "../form/AddCardForm.tsx";
 import {useStepper} from "../context/StepperContext.tsx";
 import AddCardCompleteForm from "../form/AddCardCompleteForm.tsx";
 import {CardProvider} from "../context/CardContext.tsx";
-import CardListForm from "../form/CardList.tsx";
+import CardListForm from "../form/CardListForm.tsx";
 
 function App() {
     const {step} = useStepper()
 
     return (
         <CardProvider>
-            {step === '/' && <AddCardForm/>}
+            {step === 'AddCard' && <AddCardForm/>}
             {step === 'AddCardComplete' && <AddCardCompleteForm/>}
             {step === 'CardList' && <CardListForm/>}
         </CardProvider>

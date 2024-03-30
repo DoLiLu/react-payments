@@ -1,4 +1,4 @@
-export enum CardType {
+export enum CardListType {
     POCO = "포코 카드",
     JUN = "준 카드",
     HYUNSEOK = "현석 카드",

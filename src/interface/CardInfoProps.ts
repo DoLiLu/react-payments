@@ -1,5 +1,6 @@
 export interface CardInfoProps {
-    cardName?: string
-    cardNumber?: { first: string, second: string, third: string, fourth: string }
-    name?: string
+    id: number
+    cardCompanyName: string
+    cardNumber: { first: string, second: string, third: string, fourth: string }
+    userName: string
 }

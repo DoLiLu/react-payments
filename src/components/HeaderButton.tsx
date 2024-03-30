@@ -5,12 +5,12 @@ export interface HeaderButtonProps {
     tag: string
     className: string
     value?: string
-    event?: () => void
+    onClickHandler?: () => void
 }
 
-const HeaderButton: React.FC<HeaderButtonProps> = ({tag, className, value, event}) => {
+const HeaderButton: React.FC<HeaderButtonProps> = ({tag, className, value, onClickHandler}) => {
     const handleClickEvent = () => {
-        event?.()
+        onClickHandler?.()
     }
 
     const Tag = tag as keyof IntrinsicElements;

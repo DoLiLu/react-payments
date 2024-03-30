@@ -1,31 +1,29 @@
 import React from "react"
 import {ModalProps} from "../interface/ModalProps.ts";
-import {CardType} from "../enums/CardType.ts";
+import {CardListType} from "../enums/CardListType.ts";
+import {CardModalType} from "../type/CardModalType.ts";
 
 const Modal: React.FC<ModalProps> = ({isOpen, selectCard}) => {
-    const cardNames = Object.keys(CardType);
-    const chunkSize = 4;
-    const chunkedCardNames: string[][] = [];
-    for (let i = 0; i < cardNames.length; i += chunkSize) {
-        chunkedCardNames.push(cardNames.slice(i, i + chunkSize));
-    }
     const cardSelect = (cardName: string) => {
         selectCard(cardName)
     }
+    const cardModalArray = (): CardModalType[] => {
+        let idCounter = 1
+        return Object.values(CardListType).map((cardType) => ({
+            id: idCounter++,
+            cardListType: cardType
+        }))
+    }
+
+    const cardModalTypes = cardModalArray();
 
     return (
         <div className="modal-dimmed" style={{display: isOpen ? "flex" : "none"}}>
             <div className="modal">
-                {chunkedCardNames.map((chunk, index) => (
-                    <div key={index} className="flex-center">
-                        {chunk.map((key) => (
-                            <div className="modal-item-container"
-                                 onClick={() => cardSelect(CardType[key as keyof typeof CardType])}>
-                                <div className="modal-item-dot"></div>
-                                <span
-                                    className="modal-item-name">{CardType[key as keyof typeof CardType]}</span>
-                            </div>
-                        ))}
+                {cardModalTypes.map((card) => (
+                    <div key={card.id} className="modal-item-container" onClick={() => cardSelect(card.cardListType)}>
+                        <div className="modal-item-dot"></div>
+                        <span className="modal-item-name">{card.cardListType}</span>
                     </div>
                 ))}
             </div>

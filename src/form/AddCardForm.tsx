@@ -47,8 +47,8 @@ function AddCardForm() {
     return (
         <>
             <div className="app">
-                <HeaderButton className={"page-title"} tag={"h2"} value={"< 카드 추가"} step={"CardList"} event={() => handleClick("CardList")}/>
-                <Card cardName={cardName} cardNumber={cardNumber} name={name} cardExpireDate={expireDate}
+                <HeaderButton className={"page-title"} tag={"h2"} value={"< 카드 추가"} onClickHandler={() => handleClick("CardList")}/>
+                <Card cardCompanyName={cardName} cardNumber={cardNumber} userName={name} cardExpireDate={expireDate}
                       onClick={handleCardClick}></Card>
                 <div className="input-container">
                     <span className="input-title">카드 번호</span>
@@ -104,9 +104,9 @@ function AddCardForm() {
                                  defaultState={"*"}></NumberInput>
                 </div>
                 <AddCard
-                    cardName={cardName}
+                    cardCompanyName={cardName}
                     cardNumber={cardNumber}
-                    name={name}
+                    userName={name}
                     expireDate={expireDate}>
                 </AddCard>
             </div>
